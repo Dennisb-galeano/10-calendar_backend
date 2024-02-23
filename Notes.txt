@@ -1,0 +1,50 @@
+** backend del calendarApp **
+
+en CMD "terminal"
+  - ingresar a la carpeta  10-calendar_backend
+  - instalar las configuracion del package.json con: npm init -y
+      este es el punto de entrada de cualquier aplicacion de NODE. ayuda a identificar mi paquete si se llega a desplegaar en el paquete mundial de npm. me ayuda a identificar mis dependencias y las de desarrollo.
+
+  para ejecutar el proyecto
+    se crea un archivo, y en el CMD "la terminal"..
+    - node nombre_del_archivo.js 
+  de esta manera me muestra en consola la infomacion del archivo solicitada
+  - cada vez que quiera ejecutar cualquier cambio guardado, es necesario volver a correr el comando de ejecucion
+      para evitar esto caada vez, se realiza la instalacion del siguiente paquete, al momento de desarrollar en NODE
+        - NODEMON : EJECUTA EL COMANDO CADA VEZ QUE DETECTE CAMBIOS
+          npm i nodemon -g (-g=instalacion global)
+  para ejecutar nodemon nombre_del_archivo.jxxxx
+
+en el package.json
+  - creacion de dos dcripts
+    1. "dev": "nodemon index.js", //npm run dev, Modo DESARROLLO.  comando a ejecutar en caso de instlar el nodemon en node para el back,  dev , script inventado "asi funciona node" 
+    2. "start": "node index.js" //npm start, para levantar el proyecto en modo produccion, va a ejecutar con npm start
+
+luego..  **EXPRESS**
+  instalacion de express en CMD
+    npm i express  (no esta el -g por que se quiere el el proyecto )
+
+  configuracion basica de express
+    1. En un archivo index.js >
+        const express = require('express'); // es como un import pero en NODE
+    2. crear la aplicacion de EXPRESS "el servidor"
+        const app = express();
+    3. Escuchar las peticiones
+        app.listen(5174, () => {  console.log(`Servidor corriendo en puerto ${5174} `) })
+    
+    el primer arg es el puerto donde quiero que corra 5174, el segundo arg es un callback,"fn de flecha" este se va a ejecutar cuando el servidor de express este corriendo "arriba"
+    *NODE* acepta casi cualqioer cosa actual de js. aca se usan template string `` los backtics
+
+asi ya se monta el backend server !! -- validar con postman
+
+  postman:
+    - solicitandole en el GET localhost:5174 (el puerto esogido), me va a mostrar un error ya que no encuentra la direccion del / . muestra en pantalla cannot GET/
+
+configurar la primera ruta:
+  en index.js:
+    - app
+
+
+
+
+      
