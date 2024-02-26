@@ -52,5 +52,7 @@ configurar la primera ruta:
   nodemon
  establecerla al ambienet de NODE
   - instalar: npm install dotenv
+________________________________________________--
 
-      
+enpoint: las peticiones que vamos a habilitar para uqe los ususarios puedan acceder a ella (RUTAS)
+      todo lo relacionado con auntenticacion va a estar en '/api/auth'

@@ -20,11 +20,10 @@ app.use( express.static('public')); //establece un directiorio publico, es como 
 
 
 //*configuracion de las rutas
-// app.get('/', (req, res) => {  //1.app 2.el tipo de peticion que esta esperando en este caso GET y el / 3,segundo argumento es un callbak "fn de flecha" este se dispara con el requiest y el otro el response
-//   res.json({
-//     ok:true
-//   })
-// });
+  //todo: definir rutas de autenticacion //crear usuarios, login,token
+  app.use('/api/auth',require('./routes/auth') ); //especificar la ruta donde qiero uqe se habilite el endpoint DICE QUE : toodo lo que  './routes/auth' va a exportar, se va habilitar en '/api/auth'
+  //todo: CRUD: Eventos, para poder actualizar, borrar, crear eventos ... 
+
 
 //*escuchar peticiones
 app.listen(process.env.PORT, () => {  //el primer arg es el puerto donde quiero que corra, el segundo arg es un callback,"fn de flecha" este se va a ejecutar cuando el servidor de express este corriendo "arriba", node acepta casi cualqioer cosa actual de js. ac´´a se usan template string
