@@ -43,8 +43,14 @@ asi ya se monta el backend server !! -- validar con postman
 configurar la primera ruta:
   en index.js:
     - app
+  ______________________________________________
 
+  midleware en express: es una funcion que se ejecuta en el momento en que alguien hace una peticion a mi servidor (es una fn que se ejecuta csiempre  que pasa por algun lugar)
 
+  TODO EL PRODUCTO FINAL: de la aplicacion de React, se va a montar en la caprteta public.
 
+  nodemon
+ establecerla al ambienet de NODE
+  - instalar: npm install dotenv
 
       
