@@ -56,3 +56,12 @@ ________________________________________________--
 
 enpoint: las peticiones que vamos a habilitar para uqe los ususarios puedan acceder a ella (RUTAS)
       todo lo relacionado con auntenticacion va a estar en '/api/auth'
+________________________________________________________________-
+
+  express ya trae la configuracion de toodos los endpoints que puedo solicitar "get, post,put, delete...."
+  ej.
+    si quiero crear un nuevo usuario debo hacer una peticion POST: por que tengo que hacer un posteo de informacion.
+    Login, creacion de usuario, renovacion de token: PETICION POST.
+  ______________________________________________
+
+las exportaciones en node:  module.exports = xxxxx
