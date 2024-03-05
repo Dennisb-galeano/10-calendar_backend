@@ -49,7 +49,8 @@ configurar la primera ruta:
 
   TODO EL PRODUCTO FINAL: de la aplicacion de React, se va a montar en la caprteta public.
 
-  nodemon
+  nodemon 'NODEMON'
+  
  establecerla al ambienet de NODE
   - instalar: npm install dotenv
 ________________________________________________--
@@ -65,3 +66,8 @@ ________________________________________________________________-
   ______________________________________________
 
 las exportaciones en node:  module.exports = xxxxx
+
+__________________________________________________________-
+Auth.js controllers : la parte del 
+req = "request" es lo que la persona solicita
+res = "response" es lo que nosotros respondemos 

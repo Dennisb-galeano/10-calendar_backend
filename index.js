@@ -2,8 +2,8 @@
 const express = require('express'); // es como un import pero en NODE
 require('dotenv').config();
 
-/*console.log(process.env) 
-va a mostrar TODOS los procesos que se estan corriendo en el ambiente NODE, en esta informacuin puedo obtener el puerto y al obtenerlo puedo cambiar en *escuchar peticiones(linea de abajo), 
+/*console.log(process.env)  
+va a mostrar TODOS los procesos que se estan corriendo en el ambiente NODE, en esta informacuin puedo obtener el puerto y al obtenerlo puedo cambiar en *escuchar peticiones(linea de abajo), de aca se saca el valor del puerto PORT
 */
 
 //*crear el servidor de express (la app)
@@ -18,9 +18,10 @@ va a mostrar TODOS los procesos que se estan corriendo en el ambiente NODE, en e
 app.use( express.static('public')); //establece un directiorio publico, es como el path, pero como estoy en la raiz del proyecto solo se le indica esa carpeta 'public'
 
 
+//*express - lectura parcear el body
+app.use(express.json() ); //midleware, viene de express.json-- las peticiones que vienen en formato JSON se van procesar ahi y se va a extraer el contenido, USARLO EN EL AUHT  de controllers
 
 //*configuracion de las rutas
-  //todo: definir rutas de autenticacion //crear usuarios, login,token
   app.use('/api/auth',require('./routes/auth') ); //especificar la ruta donde qiero uqe se habilite el endpoint DICE QUE : toodo lo que  './routes/auth' va a exportar, se va habilitar en '/api/auth'
   //todo: CRUD: Eventos, para poder actualizar, borrar, crear eventos ... 
 

@@ -18,14 +18,14 @@ const router = express.Router();
 //importar la fn, que se va a ejecutar en el router, esta es la referencia a la fn creada en auth/cntrolers
 const {crearUsuario, loginUsuario, revalidarToken} = require('../controlers/auth');
 
-
+//*Endpoints
 router.post('/new', crearUsuario);
 
 
 router.post('/', loginUsuario );  //1.app 2.el tipo de peticion que esta esperando 'POST'y el / 3,segundo argumento es un callbak "fn de flecha" este se dispara con el requiest y el otro el response
 
 
-router.get('/renew', revalidarToken);  //1.app 2.el tipo de peticion que esta esperando en este caso GET y el / 3,segundo argumento es un callbak "fn de flecha" este se dispara con el requiest y el otro el response
+router.get('/renew', revalidarToken);  //1.app 2.el  peticion que esta esperando GET y el / 3,segundo argumento es un callbak "fn de flecha" este se dispara con el requiest y el otro el response
 
 
 
