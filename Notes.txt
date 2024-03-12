@@ -50,7 +50,7 @@ configurar la primera ruta:
   TODO EL PRODUCTO FINAL: de la aplicacion de React, se va a montar en la caprteta public.
 
   nodemon 'NODEMON'
-  
+
  establecerla al ambienet de NODE
   - instalar: npm install dotenv
 ________________________________________________--
@@ -71,3 +71,14 @@ __________________________________________________________-
 Auth.js controllers : la parte del 
 req = "request" es lo que la persona solicita
 res = "response" es lo que nosotros respondemos 
+______________________________________________
+
+CL378 npm express-validator: 
+  Es un paquete de express que me ayuda a realizar validaciones de informacion que estoy recibiendo.  npm install express-validator
+    https://express-validator.github.io/docs/  
+
+    para implementaar varios midlewaeres: [] representa una coleccion de midlewares, un midelware no es mas que una funcion que se ejecuta antes que cualquier otra cosa
+      check(): es el midleware de express validator encargado de validar un campo en particular, lo hace uno a la vez 
+        check('lo que quiero validar', 'el mensaje de error' ).not().isEmpty() "que no este vacio"
+
+      validationResult : manejo de errores, me muestra el error en la consola
