@@ -82,3 +82,10 @@ CL378 npm express-validator:
         check('lo que quiero validar', 'el mensaje de error' ).not().isEmpty() "que no este vacio"
 
       validationResult : manejo de errores, me muestra el error en la consola
+
+CL 379 CUSTOM middleware
+  se crea carpeta en raiz del proyecto  
+    - paraa optimizar el codigo y que este encargado de valida campos.
+       validar-campos.js
+    - middleware: es casi ifgual a un controlador como los de controllers/auth.js
+      pero_ tiene una fn adicional (next) es un callback
