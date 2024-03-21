@@ -1,0 +1,4 @@
+
+
+DB user: mern_user
+DB password: kMStpDmvEF94BYXA

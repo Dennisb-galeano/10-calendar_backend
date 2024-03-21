@@ -89,3 +89,51 @@ CL 379 CUSTOM middleware
        validar-campos.js
     - middleware: es casi ifgual a un controlador como los de controllers/auth.js
       pero_ tiene una fn adicional (next) es un callback
+______________________________________________
+
+DB CONFIGURATION - MONGO
+  https://www.mongodb.com/es/cloud/atlas/efficiency
+  https://mongoosejs.com/
+
+  - Mongo atlas-es el servicio de MONGO DB en la nube
+    mongo es una base de datos diferente a MySql, ORACLE.. si son bases de datos, pero como la informacion es grabada aca, Mongo atlas, es como si fuera un objeto de JS
+
+  MONGOOSE: Es un ODM (object Data Manager) = significa que aunque en la base de datos tenemos documentos, estos se representan como objetos cuando usamos Mongoose. La parte de mapper hace referencia a como un documento es representado por un objeto, y otro documento por un objeto distinto.
+    faacilita al momento de trbajar con MONGO.
+      MONTAR LA DB - Conectarse a ella 
+
+
+  CLUSTER: es un grupo "arreglo "de servidores donde se va a tener la infortmacion ded la base de datos
+  MONGO BD COMPASS: es un programa que permite conectarse a la base de datos que esta en internet utilizando un GUI gestor una interfaz grafica de usuario GUI instalada en el pc.
+  GUI: La interfaz gráfica de usuario, conocida también como GUI (graphical user interface), es un programa informático que actúa de interfaz de usuario, utilizando un conjunto de imágenes y objetos gráficos para representar la información y acciones disponibles en la interfaz.
+  
+  - en   https://www.mongodb.com/es/cloud/atlas/efficiency
+    crear cta o ingresar con google 
+      - crear base de datos 
+        - config:
+          gratis
+          colocar nombre... siguiente 
+        cerrar si pide congig de ip 
+      - CONECT CON XXXXX ... mi cluster en este caso el calendarDB
+          descargar Mongo compass (si es necesario )
+          1. escoger version de compass
+          2. Copy the connection string, then open MongoDB Compass (pegar aca)
+            mongodb+srv://dennisbgaleano:<password>@calendardb.pvk5ya9.mongodb.net/
+            este URL viene siendo la cadena de CONEXION (debe congigurarse.. usuario y cont)
+
+  en Atlas: 
+    ir a Security
+      > database Access
+        >  ADD NEW DATABASE USER
+          - password
+              > crear un usuario (mern_user)
+              > generar contraseña segura (recomendada)
+      >en Visual Studio:  crear file y copiar las credenciales de usuario y contraseña en vs Para recordacion   (usuarioMongoDB)
+
+              > Built-in Role
+                select > Read and write to any database
+        ADD USER !  
+
+    
+
+
