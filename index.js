@@ -1,6 +1,9 @@
 
-const express = require('express'); // es como un import pero en NODE
+ // IMPORTACIONES EN  en NODE
+const express = require('express');
 require('dotenv').config();
+const {dbconection} = require('./dataBase/config');
+
 
 /*console.log(process.env)  
 va a mostrar TODOS los procesos que se estan corriendo en el ambiente NODE, en esta informacuin puedo obtener el puerto y al obtenerlo puedo cambiar en *escuchar peticiones(linea de abajo), de aca se saca el valor del puerto PORT
@@ -8,6 +11,10 @@ va a mostrar TODOS los procesos que se estan corriendo en el ambiente NODE, en e
 
 //*crear el servidor de express (la app)
   const app = express();
+
+//*Base de datos  
+dbconection();
+
   
 
 

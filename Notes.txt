@@ -13,7 +13,7 @@ en CMD "terminal"
       para evitar esto caada vez, se realiza la instalacion del siguiente paquete, al momento de desarrollar en NODE
         - NODEMON : EJECUTA EL COMANDO CADA VEZ QUE DETECTE CAMBIOS
           npm i nodemon -g (-g=instalacion global)
-  para ejecutar nodemon nombre_del_archivo.jxxxx
+  para ejecutar en terminal:  nodemon nombre_del_archivo.jxxxx  (nodemon index.js)
 
 en el package.json
   - creacion de dos dcripts
@@ -133,6 +133,31 @@ DB CONFIGURATION - MONGO
               > Built-in Role
                 select > Read and write to any database
         ADD USER !  
+
+______________________________________________
+
+al tener conectada la DB en mongo compass, ya se puede cerrar la pg de mongo-Atlas 
+  
+  Configuracion de MONGOOSE: ODM va a ayudar a trabajar con la comunicacion con MONGO desde node
+      https://mongoosejs.com/
+
+    Instalar MONGOOSE - npm install mongoose
+    Importar 
+    SE HACE LA CONECCION ene js
+    se crea un modelo
+    crear un nuevo registro,, como si fuera un objeto de JS (ej gato doc. mongoose)
+    salvar 
+    regresa una promesa
+      finalmente tenemos en db un registro.
+
+    - - - - - 
+
+
+
+
+
+
+
 
     
 
