@@ -142,16 +142,24 @@ al tener conectada la DB en mongo compass, ya se puede cerrar la pg de mongo-Atl
       https://mongoosejs.com/
 
     Instalar MONGOOSE - npm install mongoose
-    Importar 
-    SE HACE LA CONECCION ene js
-    se crea un modelo
-    crear un nuevo registro,, como si fuera un objeto de JS (ej gato doc. mongoose)
-    salvar 
-    regresa una promesa
-      finalmente tenemos en db un registro.
+    1.  Importar 
+    2.  SE HACE LA CONEXION en js 
+          (database > config.js)
+    3.  Se crea un modelo
+          Es como una rep. visual de como seria un registro dentro de la base de datos.
+            El modelo, permite hacer peticiones con una nueva instacnia, se le establecen los valores, luego se llama esa instancia.save y se graba en la base de datos.
+       crear un nuevo registro,, como si fuera un objeto de JS (ej gato doc. mongoose)
+      salvar 
+      regresa una promesa
+        finalmente tenemos en db un registro.
 
     - - - - - 
 
+    Schema: Todo en Mongoose comienza con un esquema. Cada esquema se asigna a una colección de MongoDB y define la forma de los documentos dentro de esa colección.
+    model: 
+______________________________________________
+
+  controllers > auth > siempre que se manejan bases de datos es importante manejarlos con TRY - CATCH
 
 
 
