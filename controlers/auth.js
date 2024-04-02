@@ -3,6 +3,7 @@
 //peticiones
 const express = require('express');
 const Usuario = require('../models/Usuario');
+const bcrypt = require('bcryptjs'); //paquete que encripta las contraseñas para seg del usuaio
 
 const { validationResult} = require('express-validator'); //middleware para el manejo de errores, me los muestra
 
@@ -21,10 +22,12 @@ const crearUsuario = async(req, res = express.response) => {  //router.post('/ne
         msg: 'Usuario con ese correo ya existe'
       });
     }
-
-
       usuario = new Usuario( req.body ); //crear una nueva instancia de mi usuario
-  
+    
+    //*Encriptar contraseña - bcrypt : validar doc - una función de hashing de contraseñas
+          const salt = bcrypt.genSaltSync();  //salt: entre mas vueltas mas compleja la contraseña, si se deja asi, utiliza 10 por defecto. 
+          usuario.password = bcrypt.hashSync(password, salt)
+ 
     //grabar en DB
     await usuario.save();
   

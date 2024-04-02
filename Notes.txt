@@ -121,6 +121,8 @@ DB CONFIGURATION - MONGO
             mongodb+srv://dennisbgaleano:<password>@calendardb.pvk5ya9.mongodb.net/
             este URL viene siendo la cadena de CONEXION (debe congigurarse.. usuario y cont)
 
+  recargar compass: CTRL + R
+
   en Atlas: 
     ir a Security
       > database Access
@@ -161,6 +163,19 @@ ______________________________________________
 
   controllers > auth > siempre que se manejan bases de datos es importante manejarlos con TRY - CATCH
 
+
+________________________________________________
+bcrypt:
+  paquete: npm install bcryptjs. es una función de hashing de contraseñas
+  algoritmo de cifrado de contraseñas ampliamente utilizado y considerado uno de los más seguros disponibles en la actualidad. Utiliza técnicas como el "salting" y el "hashing" para proteger las contraseñas contra ataques de fuerza bruta y rainbow tables
+
+  ¿Qué significa contraseña Hasheada?
+  El hash de contraseña es una forma de cifrar las contraseñas a través de una función hash criptográfica
+  se utiliza en controllers > auth, para encriptar las contraseñas y que sean mas seguras para el usuario
+
+  salt: es un numero o informacion aleatoria uqe es utilizada para hacer encriptacion en unsa sola via
+ 
+_________________________________________________
 
 
 
