@@ -11,9 +11,19 @@ const crearUsuario = async(req, res = express.response) => {  //router.post('/ne
  
   //console.log( req.body);   el body de postman para mandar los datos {el objeto con la informacion, nombre, correo y contraseña}
 
-  // const  { name, email, password } = req.body; // este objeto ya tiene el email, emai.. se extraen los datos del body, ya podemos obtener la informacion 
+  const  { email, password } = req.body; // este objeto ya tiene el email, emai.. se extraen los datos del body, ya podemos obtener la informacion 
   try {
-    const usuario = new Usuario(req.body); //crear una nueva instancia de mi usuario
+    //mi modelo de Usuario ya tiene config para realizar busquedas en la db
+    let usuario = await Usuario.findOne({ email}); //trabaja en base a promesas.
+    if(usuario){
+      return res.status(400).json({
+        ok: false,
+        msg: 'Usuario con ese correo ya existe'
+      });
+    }
+
+
+      usuario = new Usuario( req.body ); //crear una nueva instancia de mi usuario
   
     //grabar en DB
     await usuario.save();
@@ -22,8 +32,9 @@ const crearUsuario = async(req, res = express.response) => {  //router.post('/ne
     //*Manejo de errores, 
       res.status(201).json({
       ok:true,
-      msg:'registro',
-    })
+      uid: usuario.id,
+      name: usuario.name
+    });
     
   } catch (error) { //try, intenta hacer todo lo anterior,, si ni puede,, hace el catch
     console.log(error) //aca solo lo vere en el servidor, el mensaje msg: se le mostrara al cliente
