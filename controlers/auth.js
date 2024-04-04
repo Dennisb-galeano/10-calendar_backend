@@ -12,6 +12,7 @@ const crearUsuario = async(req, res = express.response) => {  //router.post('/ne
  
   //console.log( req.body);   el body de postman para mandar los datos {el objeto con la informacion, nombre, correo y contraseña}
 
+  
   const  { email, password } = req.body; // este objeto ya tiene el email, emai.. se extraen los datos del body, ya podemos obtener la informacion 
   try {
     //mi modelo de Usuario ya tiene config para realizar busquedas en la db
@@ -25,8 +26,8 @@ const crearUsuario = async(req, res = express.response) => {  //router.post('/ne
       usuario = new Usuario( req.body ); //crear una nueva instancia de mi usuario
     
     //*Encriptar contraseña - bcrypt : validar doc - una función de hashing de contraseñas
-          const salt = bcrypt.genSaltSync();  //salt: entre mas vueltas mas compleja la contraseña, si se deja asi, utiliza 10 por defecto. 
-          usuario.password = bcrypt.hashSync(password, salt)
+          const salt = bcrypt.genSaltSync();  //salt: entre mas vueltas mas compleja la contraseña, si se deja asi () utiliza 10 por defecto., se puede escoger el numero de vueltas
+          usuario.password = bcrypt.hashSync(password, salt); //para encriptar la contraseña
  
     //grabar en DB
     await usuario.save();
@@ -44,21 +45,53 @@ const crearUsuario = async(req, res = express.response) => {  //router.post('/ne
     res.status(500).json({ //staatus 500, error interno
       ok: false,
       msg:'Comunicate con el administrador'
-    })
+    });
     
   }
 }
 
 
-const loginUsuario = (req, res=express.response ) => {  //router.post('/' )  de routes/auth //1.app 2.el tipo de peticion que esta esperando en este caso GET y el / 3,segundo argumento es un callbak "fn de flecha" este se dispara con el requiest y el otro el response
+const loginUsuario = async (req, res=express.response ) => {  //router.post('/' )  de routes/auth //1.app 2.el tipo de peticion que esta esperando en este caso GET y el / 3,segundo argumento es un callbak "fn de flecha" este se dispara con el requiest y el otro el response
   const  {email, password} = (req.body);
 
-  res.json({
-    ok:true,
-    msg: 'login',
-    email,
-    password
-  })
+
+try {
+   //*confirmar si tenemos un usuario con ese Email
+   const usuario = await Usuario.findOne({ email}); //trabaja en base a promesas.
+   if(!usuario) { //si el usuario NO existe, error 400
+     return res.status(400).json({
+       ok: false,
+       msg: 'Usuario con ese correo NO existe'
+     });
+   }
+
+   //* Confirmar la contraseña
+   const validPassword = bcrypt.compareSync( password, usuario.password); //recibe el passsword del usuario (el que puso es usuario) vs el almacenado en la db. Regresa true: si es valido O false, si no lo es.
+   if( !validPassword) {
+    return res.status(400).json({
+      ok: false,
+      msg: 'Contraseña incorrecta'
+    });
+   }
+
+   //* Generar el TOKEN con- Json Web Token (JWT)
+    res.json({   //mistrarle al uausior uqe todo va ok
+      ok: true,
+      uid: usuario.id,
+      name: usuario.name
+    })
+
+
+
+} catch (error) {
+  console.log(error) //aca solo lo vere en el servidor, el mensaje msg: se le mostrara al cliente
+  res.status(500).json({ //staatus 500, error interno
+    ok: false,
+    msg:'Comunicate con el administrador'
+  });  
+}
+
+
 }
 
 
