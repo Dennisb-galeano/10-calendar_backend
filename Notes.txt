@@ -176,8 +176,20 @@ bcrypt:
   salt: es un numero o informacion aleatoria uqe es utilizada para hacer encriptacion en unsa sola via
  
 _________________________________________________
+JSON Web Token:
+controllers > auth
+crea token para la auntenticacion, se genera despues de la creacion del usuario y cuando se crea el login, (qye el usuaerio ya esta autenticado)
+
+Instalar la dependencia con npm install jsonwebtoken
+  importar la dependencia - const jwt = require ('jsonwebtocken');
+    esta libreria trabaja con callback, no con promesas.
+    
 
 
+  El jsonwebtocken puede funcionar desde cualquier espacio, ya que su tamaño no es muy extenso. Puede establecerse en sitios como URL, parámetros de respuesta POST o dentro de un header HTTP.
+
+A diferencia de otros elementos representados como token de la informática, JWT Tokens están conformados por claims (demandas), con las que se realiza la transmisión de información de uno a otro lado. Estos datos pueden ser relevantes a la forma de acceso, al tiempo válido, a los permisos y a cualquier otro concepto que se relacione con información de dos espacios de la web.
+https://jwt.io/
 
 
 

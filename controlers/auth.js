@@ -4,6 +4,8 @@
 const express = require('express');
 const Usuario = require('../models/Usuario');
 const bcrypt = require('bcryptjs'); //paquete que encripta las contraseñas para seg del usuaio
+const {generarJwt} = require('../helpers/jwt'); //fn uqe rergresa una promesa y esa resuelve un string (que es el token )
+
 
 const { validationResult} = require('express-validator'); //middleware para el manejo de errores, me los muestra
 
@@ -31,13 +33,16 @@ const crearUsuario = async(req, res = express.response) => {  //router.post('/ne
  
     //grabar en DB
     await usuario.save();
-  
+
+    //general el JWT (json Web Token)
+    const token = await generarJwt(usuario.id, usuario.name);
   
     //*Manejo de errores, 
       res.status(201).json({
       ok:true,
       uid: usuario.id,
-      name: usuario.name
+      name: usuario.name,
+      token
     });
     
   } catch (error) { //try, intenta hacer todo lo anterior,, si ni puede,, hace el catch
@@ -45,8 +50,7 @@ const crearUsuario = async(req, res = express.response) => {  //router.post('/ne
     res.status(500).json({ //staatus 500, error interno
       ok: false,
       msg:'Comunicate con el administrador'
-    });
-    
+    }); 
   }
 }
 
@@ -75,12 +79,14 @@ try {
    }
 
    //* Generar el TOKEN con- Json Web Token (JWT)
+    const token = await generarJwt(usuario.id, usuario.name);
+
     res.json({   //mistrarle al uausior uqe todo va ok
       ok: true,
       uid: usuario.id,
-      name: usuario.name
+      name: usuario.name,
+      token
     })
-
 
 
 } catch (error) {
@@ -93,7 +99,6 @@ try {
 
 
 }
-
 
 
 const revalidarToken = (req, res=express.response) => {  //router.get('/renew')de routes/auth  //1.app 2.el tipo de peticion que esta esperando en este caso GET y el / 3,segundo argumento es un callbak "fn de flecha" este se dispara con el requiest y el otro el response
@@ -130,3 +135,6 @@ module.exports ={
     });
   } 
   */
+
+
+  //validar token que se genero en las pruebas de postman en JWT   https://jwt.io/, para validar fechas de expiracion y token valido.
