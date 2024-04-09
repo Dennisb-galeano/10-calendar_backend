@@ -2,3 +2,8 @@
 
 DB user: mern_user
 DB password: kMStpDmvEF94BYXA
+
+
+
+test_user
+1LU6oRjnSYlXvjTd

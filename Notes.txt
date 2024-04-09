@@ -191,6 +191,8 @@ Instalar la dependencia con npm install jsonwebtoken
 A diferencia de otros elementos representados como token de la informática, JWT Tokens están conformados por claims (demandas), con las que se realiza la transmisión de información de uno a otro lado. Estos datos pueden ser relevantes a la forma de acceso, al tiempo válido, a los permisos y a cualquier otro concepto que se relacione con información de dos espacios de la web.
 https://jwt.io/
 
+si se le realiza cualquier cambio a la palabra secreta .env ( SECRET_JWT_SEED=Esto-Es_Una-Palabra-SecretA1234567 )se van a INHABILITAR TODOS los TOKEN EXISTENTES, puede ser util si necesito uqe todos los usuarios se vuelvan a autenticar
+
 
 
 

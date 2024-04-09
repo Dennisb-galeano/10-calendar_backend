@@ -11,7 +11,7 @@
 
       await mongoose.connect(process.env.DB_CNN );//(promesa)    doc de mongoose, se cambia la url de la doc de mongoose, por el valor de la nueva variable de entorno creada en .env
 
-        console.log('DB ONLINE') // conexion de node a mongo atlas
+        console.log('DB ONLINE'); // conexion de node a mongo atlas
    
    
    

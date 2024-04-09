@@ -101,10 +101,20 @@ try {
 }
 
 
-const revalidarToken = (req, res=express.response) => {  //router.get('/renew')de routes/auth  //1.app 2.el tipo de peticion que esta esperando en este caso GET y el / 3,segundo argumento es un callbak "fn de flecha" este se dispara con el requiest y el otro el response
+const revalidarToken = async (req, res=express.response) => {  //router.get('/renew')de routes/auth  //1.app 2.el tipo de peticion que esta esperando en este caso GET y el / 3,segundo argumento es un callbak "fn de flecha" este se dispara con el requiest y el otro el response
+  
+  const uid = req.uid;
+  const name = req.name;
+
+
+// generar un nuevo JSON WEB TOKEN
+const token = await generarJwt(uid, name);
+
+
+  
   res.json({
     ok:true,
-    msg: 'REVALIDAR renew del token'
+    token
   })
 }
 

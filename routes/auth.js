@@ -18,7 +18,7 @@ const router = express.Router();
 const { check } = require('express-validator'); //check middleware encargado de validar un campo particular a la vez, se unsa en endpoints 
 const {validarCampos} = require('../middlewares/validar_campos'); //de esta ruta voy a necesitas la fn de validarCampos, se va a usar añ final de cada validacion de middlewares.. 
 const {crearUsuario, loginUsuario, revalidarToken} = require('../controlers/auth'); //importar la fn, que se va a ejecutar en el router, esta es la referencia a la fn creada en auth/cntrolers
-
+const {validarJWT } = require ('../middlewares/validar-jwt');
 
 //*Endpoints
 router.post(    //si necesito aplicar un midelware ",SEGUNDO VALOR" puedo poner la fn, pero como necesito varios va entre llaves [] "una coleccion de midlewares"
@@ -40,7 +40,7 @@ router.post(  //1.app 2.el tipo de peticion que esta esperando 'POST'y el / 3,se
 ],
 loginUsuario );
 
-router.get('/renew', revalidarToken);  //1.app 2.el  peticion que esta esperando GET y el / 3,segundo argumento es un callbak "fn de flecha" este se dispara con el requiest y el otro el response
+router.get('/renew',validarJWT, revalidarToken);  //1.app 2.el  peticion que esta esperando GET y el / 3,segundo argumento es un callbak "fn de flecha" este se dispara con el requiest y el otro el response
 
 
 
