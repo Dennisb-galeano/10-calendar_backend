@@ -3,6 +3,7 @@
 const express = require('express');
 require('dotenv').config();
 const {dbconection} = require('./dataBase/config');
+const cors = require('cors');
 
 
 /*console.log(process.env)  
@@ -15,7 +16,11 @@ va a mostrar TODOS los procesos que se estan corriendo en el ambiente NODE, en e
 //*Base de datos  
 dbconection();
 
-  
+ //* CORS - LIBRERIA para proteger las rutas de mi API
+ app.use( cors());
+
+
+
 
 
 //quiero que cuando alguien ingrese al / se muestre el directorio publico ne este caso el index.html
@@ -37,3 +42,6 @@ app.use(express.json() ); //midleware, viene de express.json-- las peticiones qu
 app.listen(process.env.PORT, () => {  //el primer arg es el puerto donde quiero que corra, el segundo arg es un callback,"fn de flecha" este se va a ejecutar cuando el servidor de express este corriendo "arriba", node acepta casi cualqioer cosa actual de js. ac´´a se usan template string
   console.log(`Servidor corriendo en puerto ${process.env.PORT}`);  //ese PORT es la variable declarada en .env (el numero del puerto ), despues de establecer el ambiente de NODE
 })
+
+
+//CORS - es un middleware, se habilita despues desde el backend, el postman lo deja pasar.

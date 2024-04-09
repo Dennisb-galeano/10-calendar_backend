@@ -194,6 +194,14 @@ https://jwt.io/
 si se le realiza cualquier cambio a la palabra secreta .env ( SECRET_JWT_SEED=Esto-Es_Una-Palabra-SecretA1234567 )se van a INHABILITAR TODOS los TOKEN EXISTENTES, puede ser util si necesito uqe todos los usuarios se vuelvan a autenticar
 
 
+______________________________________________
+
+
+CORS - https://www.npmjs.com/package/cors
+
+  Como es una api que vamos a desplegar en la web, cualquier persona puede hacerle peticiones. por eso hay que configurar el CORS.
+  El CORS me permite restringir, ciertos dominios, O A CIERTAS RUTAS para dar seguridad a la API
+
 
 
     
