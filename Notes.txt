@@ -199,7 +199,7 @@ ______________________________________________
 
 CORS - https://www.npmjs.com/package/cors
 
-  Como es una api que vamos a desplegar en la web, cualquier persona puede hacerle peticiones. por eso hay que configurar el CORS.
+  cuando tenemos una api que vamos a desplegar en la web, cualquier persona puede hacerle peticiones. por eso hay que configurar el CORS.
   El CORS me permite restringir, ciertos dominios, O A CIERTAS RUTAS para dar seguridad a la API
 
 
