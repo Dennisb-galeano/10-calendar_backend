@@ -12,6 +12,9 @@ const getEventos = ( req, res = response) => {
 
 const crearEvento = ( req, res = response) => {
 
+  //debo asegurarme uqe la request tenga el evento, en el body del postman validar ( models > evento.js)
+  console.log( req.body);
+
   res.json({
     ok: true,
     msg: 'crearEvento'
