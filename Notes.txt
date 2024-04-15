@@ -204,6 +204,7 @@ CORS - https://www.npmjs.com/package/cors
 
 
 
-    
-
+moment:
+   npm install moment  Una biblioteca de fechas de JS para analizar, validar, manipular y formatear fechas.
+   se utiliza en el proyecto EN helpers > isDate.js  
 
