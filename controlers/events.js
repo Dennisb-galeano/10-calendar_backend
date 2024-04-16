@@ -45,13 +45,54 @@ const crearEvento = async ( req, res = response) => {
 }
 
 
-const actualizarEvento = ( req, res = response) => {
+const actualizarEvento = async( req, res = response) => {
 
-  res.json({
-    ok: true,
-    msg: 'actualizarEvento'
-  })
+  const eventoId = req.params.id;
+  const uid = req.uid;
+
+  try {
+  //verificar si el  ya exite en la DB con mongoose
+    const evento = await Evento.findById( eventoId );
+
+    if( !evento){
+      res.status(404).json({ //404, no existe el elemento en internet
+        ok: false,
+        msg: 'Evento no existe con ese ID'
+      });
+    }
+
+    //verificar que la misma persona que creo el evento LO PUEDA EDITAR, si no es la misma NO lo deja EDITAR el evento
+      if( evento.user.toString() !== uid ){ //con e tostring, voy a obterner el ID y lo voy a comparar 
+        return res.status(401).json({ //no autorizado
+        ok: false,
+        msg: 'No tiene el privilegio de editar este evento'
+      });
+      }
+
+      //si llegoa sin error; es la misma persona uqe creo el evento y podra editar
+      const nuevoEvento = {
+        ...req.body, // desestructurar todo lo que biene en la request. body (seroa todo lo uqe me mandan del evento)
+        user: uid
+      }
+
+      const eventoActualizado = await Evento.findByIdAndUpdate( eventoId, nuevoEvento, {new: true});  //que busque un elemento por el ID y uqe lo actualice (el EVENTO del ID que quiero act. , nueva darta que quiero guardar) , el tercer argumento, si no se coloca el new:true..muestra la ultima nota, antes de actualizar, si re doy send nuevamente al hacer la peticion me mostrata los cambios. si qioero SIEMPRE la informacion actualizada de inmediato, se coloca el tercer argumento
+        res.json({
+          ok: true,
+          evento: eventoActualizado
+        });
+
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      ok: false,
+      msg: 'Hable con el administrador'
+    });
+    
+  }
 }
+
+
 
 
 
