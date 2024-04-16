@@ -3,11 +3,17 @@
 const {response} = require ('express'); // de express requiero es response para igualarlo en la fn de getEvento
 const Evento = require ('../models/Evento'); //no esta en llaves por que se hace la exportacion por defecto
 const { body } = require('express-validator');
+const { populate } = require('dotenv');
 
-const getEventos = ( req, res = response) => {
+const getEventos = async ( req, res = response) => {
+
+//quiero retornar la lista detodos lo eventos 
+  const eventos = await Evento.find() // el el find se pueden especificar condiciones 
+                              .populate('user', 'name');//rellenar los datos del usuario, (mandar la referencia que quiero rellenar), 
+
   res.json({
     ok: true,
-    msg: 'getEventos'
+    eventos
   })
 }
 
