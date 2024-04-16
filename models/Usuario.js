@@ -8,18 +8,21 @@ const UsuarioSchema = Schema({  //objeto con la config que necesito
 
   name: { // la informacion que se guarta es de tipo string, y es obligatorio
     type: String,
-    require: true
+    required: true
   },
   email:{
     type: String,
-    require: true,
+    required: true,
     unique: true //le estoy diciendo que no pueden haber correos duplicados 
   },
   password: {
     type: String,
-    require: true
+    required: true
   }
 
 });
 
 module.exports = mongoose.model('Usuario', UsuarioSchema );  //doc mongoose de model. el model se va a llamar 'usuario', y el esuqema que va a usar sera UsuarioSchema
+
+
+// mongoose.model

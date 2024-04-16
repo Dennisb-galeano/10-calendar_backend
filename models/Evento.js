@@ -11,7 +11,7 @@ const EventoSchema = Schema({  //objeto con la config que necesito, este objeto 
 
   title: {
     type: String,
-    require: true,
+    required: true,
   },
 
   notes: {
@@ -20,18 +20,28 @@ const EventoSchema = Schema({  //objeto con la config que necesito, este objeto 
 
   start: { //fecha de inicio
     type: Date,
-    require: true
+    required: true
   },
 
   end: { //fecha de fin
     type: Date,
-    require: true
+    required: true
   },
 
   user: { //el usuario que creo el registro, saber quien grabo ese registro
     type: Schema.Types.ObjectId, //de esta forma se le dice a mongoose que es una referencia, y se especifica >
-    ref: 'Usuario' // este es el nombre del otro Schema
+    ref: 'Usuario', // este es el nombre del otro Schema
+    required: true
   }
 });
 
-module.exports = mongoose.model('Usuario', EventoSchema );  //doc mongoose de model. el model se va a llamar 'usuario', y el esuqema que va a usar sera UsuarioSchema
+
+//mongoose por defecto usa el serializador .to JSON,de los modelos.  puedo 
+  EventoSchema.method('toJSON', function() { //
+    const { __v, _id, ...object}= this.toObject(); // obtener todo el objeto con el this, asi tengo acceso a todas y cada una de  las propiedades, voy a extraer el __V"la version" y el _id y ... todo lo demas
+      object._id = _id; //remplazo de mombre
+      return object;  //solo a la hora de ver el objeto JSON
+
+  });
+
+module.exports = mongoose.model('Evento', EventoSchema );  //doc mongoose de model. el model se va a llamar 'usuario', y el esuqema que va a usar sera UsuarioSchema
