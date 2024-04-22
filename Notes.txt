@@ -208,3 +208,24 @@ moment:
    npm install moment  Una biblioteca de fechas de JS para analizar, validar, manipular y formatear fechas.
    se utiliza en el proyecto EN helpers > isDate.js  
 
+_________________________________________________
+
+HEROKU:  (NO es gratuito) es un hosting que permide desplegar las aplicaciones en diferentes lenguajes
+ 
+Despliegue del backend en RAILWAY !! 
+https://railway.app/new
+
+1. Para el despliegue usé railway (Lo de siempre, registrarse, loguearse, dar permisos, confirmar cuenta etc)
+
+2. Creé el repositorio en GitHub, subí la aplicación.
+
+3. Con la aplicación ya subida a GitHub, me conecte desde Railway dándole el permiso al repositorio en cuestión.
+
+4. Una vez conectas railway con GitHub empieza el despliegue y solo es configurar nuestras variables de entorno.
+
+5. En configuraciones (settings) del proyecto, le dan a generar dominio (lo genera automáticamente)
+
+6. Usar ese dominio para conectar nuestra aplicación en producción (probar endpoints)
+
+Para probar si funciona, tomar la URL Proporcionada por Railway y usarla en POSTMAN, con cada uno de los eventos creados para validar uqe funcionen.
+
