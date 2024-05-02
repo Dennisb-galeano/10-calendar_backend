@@ -229,3 +229,6 @@ https://railway.app/new
 
 Para probar si funciona, tomar la URL Proporcionada por Railway y usarla en POSTMAN, con cada uno de los eventos creados para validar uqe funcionen.
 
+______________________________________________
+
+

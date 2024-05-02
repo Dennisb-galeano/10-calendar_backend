@@ -34,7 +34,7 @@ const crearUsuario = async(req, res = express.response) => {  //router.post('/ne
     //grabar en DB
     await usuario.save();
 
-    //general el JWT (json Web Token)
+    //generar el JWT (json Web Token)
     const token = await generarJwt(usuario.id, usuario.name);
   
     //*Manejo de errores, 
@@ -110,14 +110,12 @@ const revalidarToken = async (req, res=express.response) => {  //router.get('/re
 // generar un nuevo JSON WEB TOKEN
 const token = await generarJwt(uid, name);
 
-
-  
   res.json({
     ok:true,
+    uid, name,
     token
   })
 }
-
 
 
 //*EXPORTAR EN NODE, 
