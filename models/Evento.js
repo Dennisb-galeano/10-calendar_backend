@@ -38,8 +38,8 @@ const EventoSchema = Schema({  //objeto con la config que necesito, este objeto 
 
 //mongoose por defecto usa el serializador .to JSON,de los modelos.  puedo 
   EventoSchema.method('toJSON', function() { //
-    const { __v, _id, ...object}= this.toObject(); // obtener todo el objeto con el this, asi tengo acceso a todas y cada una de  las propiedades, voy a extraer el __V"la version" y el _id y ... todo lo demas
-      object._id = _id; //remplazo de mombre
+    const { __v, _id, ...object } = this.toObject(); // obtener todo el objeto con el this, asi tengo acceso a todas y cada una de  las propiedades, voy a extraer el __V"la version" y el _id y ... todo lo demas
+      object.id = _id; //remplazo de mombre
       return object;  //solo a la hora de ver el objeto JSON
 
   });
