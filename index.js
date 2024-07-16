@@ -1,5 +1,7 @@
 
  // IMPORTACIONES EN  en NODE
+const path = require('path'); //importa el pathsolicitado en linea 43
+
 const express = require('express');
 require('dotenv').config();
 const {dbconection} = require('./dataBase/config');
@@ -35,9 +37,11 @@ app.use(express.json() ); //midleware, viene de express.json-- las peticiones qu
 
 //*configuracion de las rutas
   app.use('/api/auth',require('./routes/auth') ); //especificar la ruta donde qiero uqe se habilite el endpoint DICE QUE : toodo lo que  './routes/auth' va a exportar, se va habilitar en '/api/auth'
-  //todo: CRUD: Eventos, para poder actualizar, borrar, crear eventos ... 
   app.use('/api/events',require('./routes/events') ); // ruta de los eventos, va a requerir las rutas que tengo en /events
   
+  app.use('*', (req, resp) =>{ //cualquier peticion que no sean las dos anteriores lleven a servir el contenido del index.html
+    resp.sendFile( path.join(__dirname, 'public/index.html' )); //en el path.join,, doble guion _ permite apuntar a donde corre la app y se le adjunta el public...
+  });
 
 //*escuchar peticiones
 app.listen(process.env.PORT, () => {  //el primer arg es el puerto donde quiero que corra, el segundo arg es un callback,"fn de flecha" este se va a ejecutar cuando el servidor de express este corriendo "arriba", node acepta casi cualqioer cosa actual de js. ac´´a se usan template string
